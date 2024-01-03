@@ -1,5 +1,6 @@
-import Login from "./pages/login/Login";
-import Register from "./pages/register/Register";
+import Login from "./pages/login/login";
+import Register from "./pages/register/register";
+import Home from "./pages/home/Home";
 
 import {
   createBrowserRouter,
@@ -8,8 +9,6 @@ import {
   Navigate,
 } from "react-router-dom";
 import './App.css';
-
-import Home from "./pages/home/Home";
 
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
@@ -30,12 +29,7 @@ function App() {
   };
 
   const router = createBrowserRouter([
-    {
-      path: "/",
-      element: (
-        <ProtectedRoute>
-        </ProtectedRoute>
-      ),
+    { 
       children: [
         {
           path: "/",
