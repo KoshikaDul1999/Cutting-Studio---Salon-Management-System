@@ -2,6 +2,7 @@ import express from "express";
 import sequelize from "./connect.js";
 import User from "./models/userModel.js";
 import authRoutes from "./routes/auth.js";
+import productRoutes from './routes/productRouting.js'; 
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
@@ -19,7 +20,8 @@ app.use(
 )
 app.use(cookieParser())
 
-app.use("/api/auth", authRoutes)
+app.use("/api/auth", authRoutes);
+app.use('/api/products', productRoutes); 
 
 const PORT = process.env.PORT || 8080;
 
