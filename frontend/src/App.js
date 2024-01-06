@@ -31,10 +31,10 @@ function App() {
     return (
       <QueryClientProvider client={queryClient}>
         <div className={`theme-${darkMode ? "dark" : "light"}`}>
-          <Navbar />
           <div style={{ display: "flex" }}>
             <Sidebar />
             <div style={{ flex: 6 }}>
+              <Navbar />
               <Outlet />
             </div>
           </div>
@@ -42,6 +42,7 @@ function App() {
       </QueryClientProvider>
     );
   };
+  
 
   const ProtectedRoute = ({ children }) => {
     if (!currentUser) {

@@ -1,22 +1,17 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useReducer } from "react";
+import DarkModeReducer from "./darkModeReducer";
 
-export const DarkModeContext = createContext();
+const INITIAL_STATE = {
+  darkMode: false,
+};
+
+export const DarkModeContext = createContext(INITIAL_STATE);
 
 export const DarkModeContextProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(
-    JSON.parse(localStorage.getItem("darkMode")) || false
-  );
-
-  const toggle = () => {
-    setDarkMode(!darkMode);
-  };
-
-  useEffect(() => {
-    localStorage.setItem("darkMode", darkMode);
-  }, [darkMode]);
+  const [state, dispatch] = useReducer(DarkModeReducer, INITIAL_STATE);
 
   return (
-    <DarkModeContext.Provider value={{ darkMode, toggle }}>
+    <DarkModeContext.Provider value={{ darkMode: state.darkMode, dispatch }}>
       {children}
     </DarkModeContext.Provider>
   );

@@ -1,49 +1,56 @@
 import "./navbar.scss";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
-import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
-import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
+import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import FullscreenExitOutlinedIcon from "@mui/icons-material/FullscreenExitOutlined";
+import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
+import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import { DarkModeContext } from "../../context/darkModeContext";
-import { AuthContext } from "../../context/authContext";
+import { useContext } from "react";
 
 const Navbar = () => {
-  const { toggle, darkMode } = useContext(DarkModeContext);
-  const { currentUser } = useContext(AuthContext);
+  const { dispatch } = useContext(DarkModeContext);
 
   return (
     <div className="navbar">
-      <div className="left">
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <span>lamasocial</span>
-        </Link>
-        <HomeOutlinedIcon />
-        {darkMode ? (
-          <WbSunnyOutlinedIcon onClick={toggle} />
-        ) : (
-          <DarkModeOutlinedIcon onClick={toggle} />
-        )}
-        <GridViewOutlinedIcon />
+      <div className="wrapper">
         <div className="search">
-          <SearchOutlinedIcon />
           <input type="text" placeholder="Search..." />
+          <SearchOutlinedIcon />
         </div>
-      </div>
-      <div className="right">
-        <PersonOutlinedIcon />
-        <EmailOutlinedIcon />
-        <NotificationsOutlinedIcon />
-        <div className="user">
-          <img
-            src={"/upload/" + currentUser.profilePic}
-            alt=""
-          />
-          <span>{currentUser.name}</span>
+        <div className="items">
+          <div className="item">
+            <LanguageOutlinedIcon className="icon" />
+            English
+          </div>
+          <div className="item">
+            <DarkModeOutlinedIcon
+              className="icon"
+              onClick={() => dispatch({ type: "TOGGLE" })}
+            />
+          </div>
+          <div className="item">
+            <FullscreenExitOutlinedIcon className="icon" />
+          </div>
+          <div className="item">
+            <NotificationsNoneOutlinedIcon className="icon" />
+            <div className="counter">1</div>
+          </div>
+          <div className="item">
+            <ChatBubbleOutlineOutlinedIcon className="icon" />
+            <div className="counter">2</div>
+          </div>
+          <div className="item">
+            <ListOutlinedIcon className="icon" />
+          </div>
+          <div className="item">
+            <img
+              src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              alt=""
+              className="avatar"
+            />
+          </div>
         </div>
       </div>
     </div>
