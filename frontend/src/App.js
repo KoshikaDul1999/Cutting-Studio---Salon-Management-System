@@ -4,8 +4,6 @@ import Home from "./pages/home/Home";
 
 import Navbar from "./components/navbar/Navbar";
 import LeftBar from "./components/leftBar/LeftBar";
-import RightBar from "./components/rightBar/RightBar";
-
 import {
   BrowserRouter as Router,
   Routes,
