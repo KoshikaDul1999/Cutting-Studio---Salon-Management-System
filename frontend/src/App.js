@@ -3,7 +3,7 @@ import Register from "./pages/register/register";
 import Home from "./pages/home/Home";
 
 import Navbar from "./components/navbar/Navbar";
-import LeftBar from "./components/leftBar/LeftBar";
+import Sidebar from "./components/sidebar/Sidebar";
 import {
   BrowserRouter as Router,
   Routes,
@@ -33,7 +33,7 @@ function App() {
         <div className={`theme-${darkMode ? "dark" : "light"}`}>
           <Navbar />
           <div style={{ display: "flex" }}>
-            <LeftBar />
+            <Sidebar />
             <div style={{ flex: 6 }}>
               <Outlet />
             </div>
