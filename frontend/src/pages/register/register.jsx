@@ -39,7 +39,7 @@ const Register = () => {
           
           </p>
           <span>Do you have an account?</span>
-          <Link to="/login">
+          <Link to="/">
             <button>Login</button>
           </Link>
         </div>
