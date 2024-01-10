@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   getSales,
+  getSalesByDateRange,
   getSaleById,
   createSale,
   updateSale,
@@ -10,6 +11,7 @@ import {
 const router = express.Router();
 
 router.get('/getSales', getSales);
+router.get('/getSalesByDateRange', getSalesByDateRange);
 router.post('/createSale', createSale);
 router.get('/getSaleById/:id', getSaleById);
 router.put('/updateSale/:id', updateSale);
