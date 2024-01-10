@@ -1,4 +1,4 @@
-import Sale from '../models/SaleModel.js';
+import Sale from '../models/SalesModule.js';
 import express from 'express';
 
 const router = express.Router();
