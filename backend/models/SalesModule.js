@@ -10,6 +10,9 @@ const Sale = sequelize.define('sales', {
   description: {
     type: DataTypes.STRING(255),
   },
+  date: {
+    type: DataTypes.STRING(255),
+  },
   amount: {
     type: DataTypes.DOUBLE(10, 2),
   },

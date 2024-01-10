@@ -1,3 +1,4 @@
+import { Op } from 'sequelize';
 import Sale from '../models/SalesModule.js';
 import express from 'express';
 
@@ -68,5 +69,30 @@ export const deleteSale = async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+
+// Get sales within a date range
+export const getSalesByDateRange = async (req, res) => {
+  try {
+    const { startDate, endDate } = req.query;
+
+    if (!startDate || !endDate) {
+      return res.status(400).json({ error: 'Both start date and end date are required.' });
+    }
+
+    const sales = await Sale.findAll({
+      where: {
+        date: {
+          [Op.between]: [startDate, endDate],
+        },
+      },
+    });
+
+    res.status(200).json(sales);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
 
 export default router;
